@@ -10,10 +10,12 @@
 <tr><td>오류(크래시) 정보, 오류가 난 때의 기기 정보</td><td>오류 원인 찾기와 수정</td><td>Google Firebase Crashlytics</td></tr>
 <tr><td>광고 ID, IP 주소, 광고 이용 기록, 기기 정보</td><td>광고 보여 주기, 광고 성과 측정, 부정 클릭 방지</td><td>Google AdMob</td></tr>
 <tr><td>(Google Play 게임에 로그인한 경우만) 플레이어 ID, 표시 이름과 프로필 이미지, 저장 게임 데이터(진행 상황·설정), 리더보드 점수, 업적 달성 기록</td><td>로그인, 진행 데이터의 클라우드 저장과 복원, 리더보드와 업적 표시</td><td>Google Play 게임 서비스</td></tr>
+<tr><td>(인앱결제를 이용한 경우만) 구매 내역: 상품 ID, 주문 ID, 구매 시각, 결제 상태</td><td>구매한 상품의 지급과 복원, 중복·부정 결제 확인</td><td>원스토어 빌드: 원스토어 인앱결제 / Google Play 빌드: Google Play 결제</td></tr>
 </table>
+<p>결제는 게임을 내려받은 스토어(원스토어 또는 Google Play)의 결제 시스템이 처리합니다. 카드번호, 계좌번호 같은 결제 수단 정보는 해당 스토어가 직접 받으며 개발자는 받지 않습니다. 개발자는 상품 지급을 위해 구매 내역(상품 ID, 주문 ID 등)만 확인합니다.</p>
 <p>게임의 저장 데이터(점수, 설정 등)는 기본적으로 이용자의 기기 안에 저장됩니다. Google Play 게임에 로그인해 클라우드 저장을 쓰면 저장 데이터가 Google Play 게임 서비스의 저장소(이용자의 Google 계정에 연결)에 올라갑니다. 어느 경우에도 개발자의 별도 서버로 전송되거나 개발자가 직접 보관하지 않습니다.</p>
 <h2>2. 처리 위탁과 국외 이전</h2>
-<p>위 정보는 Google LLC(미국)가 운영하는 서비스(Firebase, AdMob, Google Play 게임 서비스)로 전송되어 처리됩니다. 전송은 암호화(HTTPS)된 통신으로 이루어집니다.</p>
+<p>위 정보는 Google LLC(미국)가 운영하는 서비스(Firebase, AdMob, Google Play 게임 서비스, Google Play 결제)로 전송되어 처리됩니다. 원스토어 빌드의 결제 정보는 원스토어(대한민국)가 처리합니다. 전송은 암호화(HTTPS)된 통신으로 이루어집니다.</p>
 <ul>
 <li>받는 곳: Google LLC (미국), 연락처: <a href="https://support.google.com/policies/contact/general_privacy_form">Google 개인정보 문의</a></li>
 <li>전송 시기: 게임을 이용할 때 인터넷으로 전송</li>
@@ -21,7 +23,7 @@
 <li>Google이 파트너 앱의 정보를 사용하는 방법: <a href="https://policies.google.com/technologies/partner-sites">https://policies.google.com/technologies/partner-sites</a></li>
 </ul>
 <h2>3. 보관 기간과 파기</h2>
-<p>개발자는 수집된 정보를 직접 보관하지 않습니다. Google 서비스에 저장된 정보는 각 서비스의 보관 기간(Firebase 애널리틱스는 개발자가 정한 기간, 최대 14개월)이 지나면 자동으로 삭제됩니다. 게임을 삭제하면 기기 안의 저장 데이터도 함께 삭제됩니다. Google Play 게임에 올라간 클라우드 저장, 리더보드 점수, 업적 기록은 이용자가 Google Play 게임 앱(설정 &gt; Play 게임 계정 및 데이터 삭제)에서 이 게임의 데이터를 지우거나, 아래 연락처로 삭제를 요청할 때까지 Google 계정에 보관됩니다.</p>
+<p>개발자는 수집된 정보를 직접 보관하지 않습니다. Google 서비스에 저장된 정보는 각 서비스의 보관 기간(Firebase 애널리틱스는 개발자가 정한 기간, 최대 14개월)이 지나면 자동으로 삭제됩니다. 게임을 삭제하면 기기 안의 저장 데이터도 함께 삭제됩니다. Google Play 게임에 올라간 클라우드 저장, 리더보드 점수, 업적 기록은 이용자가 Google Play 게임 앱(설정 &gt; Play 게임 계정 및 데이터 삭제)에서 이 게임의 데이터를 지우거나, 아래 연락처로 삭제를 요청할 때까지 Google 계정에 보관됩니다. 구매 기록은 각 스토어의 정책과 전자상거래 등 관련 법령이 정한 기간 동안 해당 스토어에 보관됩니다.</p>
 <h2>4. 이용자의 권리</h2>
 <ul>
 <li>기기의 <b>설정 &gt; Google &gt; 광고</b>에서 광고 ID를 재설정하거나 삭제할 수 있습니다.</li>
@@ -43,6 +45,7 @@
 <ul>
 <li>Google Firebase Analytics and Crashlytics: gameplay events, crash reports, device information and app instance identifiers, used to improve the game and fix errors.</li>
 <li>Google Play Games Services (only if you sign in): player ID, display name and profile image, cloud save data, leaderboard scores and achievements, used to sign you in, sync your progress and show rankings. You can sign out in the game or delete this game's data in the Play Games app.</li>
+<li>In-app purchases (only if you buy): purchase records such as product ID, order ID, time and status, used to deliver and restore purchased items and to check for duplicate or fraudulent payments. Payments are processed by the store you installed the game from (ONE store or Google Play); the developer never receives your card or account numbers.</li>
 <li>Google AdMob: advertising ID, IP address, ad interactions and device information, used to show and measure ads and prevent fraud. You can reset or delete your advertising ID in your device settings, and change your consent choices in the in-game Privacy settings.</li>
 </ul>
 <p>See <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>. Data is transferred over encrypted connections.</p>
